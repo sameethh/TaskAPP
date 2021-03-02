@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
   View,
-  Text,
   SafeAreaView,
   Button
 } from 'react-native'
@@ -32,13 +31,14 @@ const TaskExplorer = () => {
  }
   
   const removeTask = (id) => {
-    console.log(tasks)
     setTasks((tasks) => tasks.filter(task => id != task.id))
   }
 
   const InputChange = (text) => {
     setInput(text)
   }
+
+ 
 
   return ( 
     <SafeAreaView style={{flex:1,backgroundColor:'teal'}}>
@@ -59,7 +59,7 @@ const TaskExplorer = () => {
                 </View>
           </View>
         <Footer count={tasks.length}/>
-      </SafeAreaView>
+    </SafeAreaView>
 )}
 
 export default TaskExplorer

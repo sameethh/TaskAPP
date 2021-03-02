@@ -11,18 +11,19 @@ const Tasks = (props) => {
 
    const Item = ({ title, id }) => (
     <View style={styles.item}>
-      <View style={{flex:0.85,justifyContent:'flex-start'}}>
-        <Text style={styles.title}>{title}</Text>
+      <View style={{flex:0.9,justifyContent:'flex-start'}}>
+        <Text style={styles.title}>{title.length > 17 ? title.substring(0,17).concat('...'):title}</Text>
       </View>
-      <TouchableHighlight onPress={() => props.removeTask(id)} style={{flex:0.15,justifyContent:'center',}}>
-         <Text style={{color:'white'}}>Clear</Text>
+      <View style={{flex:0.1, alignItems:'flex-end', justifyContent:'center'}}>
+      <TouchableHighlight onPress={() => props.removeTask(id)} style={{justifyContent:'center',}}>
+         <Text style={{color:'white'}}>clear</Text>
       </TouchableHighlight>
+      </View>
     </View>
   )
   
    return (
-    <View>
-        <Text></Text>
+    <View style={{marginTop:10,borderTopWidth:2,borderRadius:2}}>
         <FlatList
             data={DATA}
             renderItem={renderItem}
@@ -38,7 +39,7 @@ const Tasks = (props) => {
         },
         item: {
          // justifyContent:'flex-end',
-         flex:1,
+          flex:1,
           flexDirection:'row',
           backgroundColor: '#616A6B',
           padding: 10,
