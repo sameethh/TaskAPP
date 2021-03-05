@@ -1,34 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import {
   View,
-  SafeAreaView,
-  Button
+  SafeAreaView,Button
 } from 'react-native'
 
-import Header from './Header.js'
-import TaskInput from './TaskInput.js'
-import Tasks from './Tasks'
-import Footer from './Footer'
+import Header from './components/Header'
+import TaskInput from './components/TaskInput'
+import Tasks from './components/Tasks'
+import Footer from './components/Footer'
 
 
 
 const TaskExplorer = () => {
 
   useEffect(() => {
-  },[])
+  },[tasks])
 
   const [tasks, setTasks] = useState([])
   const [input, setInput] = useState()
+  const [visible, Visibility] = useState(false)
 
 
   const AddTask = (event) => {
-    const { text } = event.nativeEvent
-      if (text) {
-      text ? setTasks((tasks) => [...tasks,{id:Math.random().toString(),title:text}]) : console.warn('Add task error')
-      } else if(input){
-        setTasks((tasks) => [...tasks,{id:Math.random().toString(),title:input}])
-      }
- }
+    Visibility(false)
+    if (event) {
+      const { text } = event.nativeEvent
+      text ? setTasks((tasks) => [...tasks, {
+        id: Math.random().toString(),
+        title: text
+      }]) : console.warn('Add task error')
+    } else if (input) {
+      setTasks((tasks) => [...tasks, {
+        id: Math.random().toString(),
+        title: input
+      }])
+    }
+  }
   
   const removeTask = (id) => {
     setTasks((tasks) => tasks.filter(task => id != task.id))
@@ -38,18 +45,20 @@ const TaskExplorer = () => {
     setInput(text)
   }
 
- 
-
   return ( 
     <SafeAreaView style={{flex:1,backgroundColor:'teal'}}>
         <Header customHeader={'Tasking App'}/>
           <View style={{flex:1,backgroundColor:'white'}}>
             <TaskInput 
+              visible={visible}
               AddTask={AddTask}
               InputChange={InputChange}
+              Visibility={(flag) => Visibility(flag)}
               />
-              <View style={{flex:0.07,borderWidth:1,borderColor:'black',backgroundColor:'black',marginHorizontal:140}}>
-                  <Button onPress={AddTask} title={'Add Task'}  color="white"/>
+              <View style={{ borderWidth: 1,
+                    borderColor: 'black',
+                    backgroundColor: 'black'}}>
+                    <Button  title={'START'}  color="white" onPress={() => Visibility(true)}/>
               </View>
               <View style={{flex:0.88}}>
                 <Tasks 

@@ -1,0 +1,39 @@
+{
+    "name":"Tech Stack Description",
+    "version":"1.0.0",
+    "data": [
+        {
+            "key":"NodeJS",
+            "value":"....."
+        },
+        {
+            "key":"ReactJS",
+            "value":"....."
+        },
+        {
+            "key":"AngularJS",
+            "value":"....."
+        }, 
+        {
+            "key":"VanillaJS",
+            "value":"....."
+        },
+        {
+            "key":"VueJS",
+            "value":"....."
+        },
+        {
+            "key":"ReactNative",
+            "value":"....."
+        },
+        {
+            "key":"Swift",
+            "value":"....."
+        },
+        {
+            "key":"Objective-c",
+            "value":"....."
+        }
+    ]
+
+}
