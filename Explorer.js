@@ -51,7 +51,7 @@ const TaskExplorer = () => {
    order === '' || order === 'Desc' ?  setOrder('Asc') : setOrder('Desc')
     setTasks((tasks) => [...tasks].sort((a,b) => {
        a = a.title.toLowerCase() , b = b.title.toLowerCase()
-       return    order === 'Asc' ? (a < b ? -1 : a > b ? 1 : 0 ) : (a > b ? -1 : a < b ? 1 : 0 ) 
+       return  order === 'Asc' ? (a < b ? -1 : a > b ? 1 : 0 ) : (a > b ? -1 : a < b ? 1 : 0 ) 
     }))
   }
 
@@ -72,12 +72,12 @@ const TaskExplorer = () => {
                     backgroundColor: 'black'}}>
                     <Button  title={'START'}  color="white" onPress={() => Visibility(true)}/>
               </View>
-              <View style={{ borderWidth: 1,
+             {tasks.length > 1 ? <View style={{ borderWidth: 1,
                     marginHorizontal:160,
                     borderColor: 'black',
                     backgroundColor: 'black'}}>
                     <Button  title={order === 'Asc' ? 'SORT^' : order === 'Desc'? 'SORTv' : 'SORT' }  color="white" onPress={sorting}/>
-              </View>
+              </View> : null }
               <View style={{flex:0.88}}>
                 <Tasks 
                   DATA={tasks}
