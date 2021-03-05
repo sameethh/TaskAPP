@@ -30,6 +30,7 @@ const TaskExplorer = () => {
         title: text
       }]) : console.warn('Add task error')
     } else if (input) {
+      setInput('')
       setTasks((tasks) => [...tasks, {
         id: Math.random().toString(),
         title: input
@@ -47,7 +48,7 @@ const TaskExplorer = () => {
 
   return ( 
     <SafeAreaView style={{flex:1,backgroundColor:'teal'}}>
-        <Header customHeader={'Tasking App'}/>
+        <Header customHeader={'Task App'}/>
           <View style={{flex:1,backgroundColor:'white'}}>
             <TaskInput 
               visible={visible}
